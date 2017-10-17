@@ -8,7 +8,7 @@ def test_animation(animation):
         time.sleep(2)
 
     sleep()
-    print("\r")
+    print()
 
 
 test_animation("asterisk")

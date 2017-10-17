@@ -1,6 +1,5 @@
 import threading
 import time
-import sys
 
 animations = {
     "asterisk": ["✶", "✷", "✸", "✹", "✺"],
@@ -47,18 +46,13 @@ def waitperson(animation, dt=0.1, prefix="", suffix=" "):
             thread.start()
             position = 0
 
-            sys.stdout.write(prefix + animation[position] + suffix)
-            sys.stdout.flush()
+            print(prefix + animation[position] + suffix, end="")
             time.sleep(dt)
 
             while thread.isAlive():
-                sys.stdout.write("\r" + prefix + animation[position] + suffix)
-                sys.stdout.flush()
+                print("\r" + prefix + animation[position] + suffix, end="")
                 time.sleep(dt)
                 position = (position + 1) % length
-
-            sys.stdout.write("\r")
-            sys.stdout.flush()
 
         return decorated_func
 
